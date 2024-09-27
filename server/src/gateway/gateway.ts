@@ -1,6 +1,13 @@
-import { WebSocketGateway } from '@nestjs/websockets'
+import {
+  MessageBody,
+  SubscribeMessage,
+  WebSocketGateway,
+} from '@nestjs/websockets';
 
-@WebSocketGateway()
-export class MyGateway{
-
+@WebSocketGateway({ cors: { origin: '*' }, transports: ['websocket'] })
+export class MyGateway {
+  @SubscribeMessage('newMessage')
+  onNewMessage(@MessageBody() body: any) {
+    console.log('body: ', body);
+  }
 }
