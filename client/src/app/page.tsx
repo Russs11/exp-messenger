@@ -1,18 +1,29 @@
 'use client'
 import Image from 'next/image'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { WebsocketContext, WebsocketProvider } from './context/WebsocketContext'
+
+interface IMessage {
+  msg: string
+  content: string
+}
 
 export default function Home() {
   const socket = useContext(WebsocketContext)
+
+  const [messages, setMessages] = useState<IMessage[]>([])
+  console.log('messeges: ', messages);
 
   useEffect(() => {
     socket.on('connect', () => {
       console.log('Connected')
     })
-    socket.on('onMessage', data => {
+    socket.on('onMessage', (data: IMessage) => {
       console.log('onMessage event received')
       console.log(data)
+      setMessages(prev => {
+        return [...prev, data]
+      })
     })
     return () => {
       console.log('Unregistering events...')
@@ -20,6 +31,13 @@ export default function Home() {
       socket.off('onMessage')
     }
   }, [])
+
+  function eminNewMessage1() {
+    socket.emit('newMessage', { msg: socket.id, content: 'Hello World' })
+  }
+  function eminNewMessage2() {
+    socket.emit('newMessage', { msg: socket.id, content: 'Hi' })
+  }
 
   return (
     <WebsocketProvider value={socket}>
@@ -31,17 +49,21 @@ export default function Home() {
             alt='Next.js logo'
             width={180}
             height={38}
+            blurDataURL={'/next.svg'}
             priority
           />
           <ol className='list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]'>
-            <li className='mb-2'>
+            <li className='mb-2' onClick={eminNewMessage1}>
               Get started by editing{' '}
               <code className='bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold'>
                 src/app/page.tsx
               </code>
               .
             </li>
-            <li>Save and see your changes instantly.</li>
+            <li onClick={eminNewMessage2}>
+              Save and see your changes instantly.
+            </li>
+            {messages.length === 0 ? <li>no messages</li> : null}
           </ol>
 
           <div className='flex gap-4 items-center flex-col sm:flex-row'>

@@ -8,7 +8,7 @@ import {
 } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
 
-@WebSocketGateway()
+@WebSocketGateway({ cors: { origin: ['http://localhost:3001'] } })
 export class MyGateway implements OnModuleInit {
   @WebSocketServer()
   server: Server;
@@ -24,7 +24,7 @@ export class MyGateway implements OnModuleInit {
     console.log(`body`, body);
     console.log(`from`, client.id);
     this.server.emit('onMessage', {
-      msg: 'New Message',
+      msg: client.id,
       content: body,
     });
   }
