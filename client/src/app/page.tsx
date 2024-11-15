@@ -4,8 +4,8 @@ import { useContext, useEffect, useState } from 'react'
 import { WebsocketContext, WebsocketProvider } from './context/WebsocketContext'
 
 interface IMessage {
-  msg: string
-  content: string
+  socketId: string
+  text: string
 }
 
 export default function Home() {
@@ -32,19 +32,27 @@ export default function Home() {
   }, [])
 
   function emitNewMessage1() {
-    socket.emit('newMessage', { msg: socket.id, content: 'Hello World' })
+    const message: IMessage = {
+      socketId: socket.id ? socket.id : 'no id',
+      text: 'Hello World',
+    }
+    socket.emit('newMessage', message)
   }
   function emitNewMessage2() {
-    socket.emit('newMessage', { msg: socket.id, content: 'Hi' })
+    const message: IMessage = {
+      socketId: socket.id ? socket.id : 'no id',
+      text: 'Hi',
+    }
+    socket.emit('newMessage', message)
   }
   function messagesList(messages: IMessage[]) {
     const newMessagesList = messages.map((msg, index) => {
-      const text = `From ${msg.msg} - ${msg.content}`
+      console.log('msg: ', msg);
+      const text = `From ${msg.socketId} - ${msg.text}`
       return <div key={index}>{text}</div>
     })
     return newMessagesList
   }
-  console.log(messagesList(messages))
 
   return (
     <WebsocketProvider value={socket}>

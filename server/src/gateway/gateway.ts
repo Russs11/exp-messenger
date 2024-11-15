@@ -8,6 +8,11 @@ import {
 } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
 
+interface MessageDto {
+  socketId: string;
+  text: string;
+}
+
 @WebSocketGateway({ cors: { origin: ['http://localhost:3001'] } })
 export class MyGateway implements OnModuleInit {
   @WebSocketServer()
@@ -20,12 +25,14 @@ export class MyGateway implements OnModuleInit {
   }
 
   @SubscribeMessage('newMessage')
-  onNewMessage(@MessageBody() body: any, @ConnectedSocket() client: Socket) {
-    console.log(`body`, body);
-    console.log(`from`, client.id);
-    this.server.emit('onMessage', {
-      msg: client.id,
-      content: body,
-    });
+  onNewMessage(
+    @MessageBody() body: MessageDto,
+    @ConnectedSocket() client: Socket,
+  ) {
+    const message: MessageDto = {
+      socketId: body.socketId ? body.socketId : 'no id',
+      text: body.text,
+    };
+    if (client.id === body.socketId) this.server.emit('onMessage', message);
   }
 }
