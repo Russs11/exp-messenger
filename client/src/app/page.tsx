@@ -1,10 +1,12 @@
 'use client'
 import Image from 'next/image'
 import { useContext, useEffect, useState } from 'react'
+import { io } from 'socket.io-client'
 import { WebsocketContext, WebsocketProvider } from './context/WebsocketContext'
 
 interface IMessage {
   socketId: string
+  rooms: string[]
   text: string
 }
 
@@ -47,11 +49,17 @@ export default function Home() {
   }
   function messagesList(messages: IMessage[]) {
     const newMessagesList = messages.map((msg, index) => {
-      console.log('msg: ', msg);
       const text = `From ${msg.socketId} - ${msg.text}`
       return <div key={index}>{text}</div>
     })
     return newMessagesList
+  }
+  function joinToRoom() {
+    const message: IMessage = {
+      socketId: socket.id ? socket.id : 'no id',
+      text: 'room1',
+    }
+    socket.emit('joinToRoom', message)
   }
 
   return (
@@ -79,9 +87,32 @@ export default function Home() {
               Save and see your changes instantly.
             </li>
           </ol>
-          {messages.length === 0 ? <div>no messages</div> : null}
-          {messagesList(messages)}
+          {messages.length === 0 ? (
+            <div>no messages</div>
+          ) : (
+            messagesList(messages)
+          )}
           <div className='flex gap-4 items-center flex-col sm:flex-row'>
+            <div className='rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5'>
+              <Image
+                className='dark:invert'
+                src='/vercel.svg'
+                alt='Vercel logomark'
+                width={20}
+                height={20}
+              />
+              Join to room1
+            </div>
+            <div className='rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5'>
+              <Image
+                className='dark:invert'
+                src='/vercel.svg'
+                alt='Vercel logomark'
+                width={20}
+                height={20}
+              />
+              Leave the room1
+            </div>
             <a
               className='rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5'
               href='https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
