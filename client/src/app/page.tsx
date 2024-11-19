@@ -36,6 +36,7 @@ export default function Home() {
   function emitNewMessage1() {
     const message: IMessage = {
       socketId: socket.id ? socket.id : 'no id',
+      rooms: [],
       text: 'Hello World',
     }
     socket.emit('newMessage', message)
@@ -43,6 +44,7 @@ export default function Home() {
   function emitNewMessage2() {
     const message: IMessage = {
       socketId: socket.id ? socket.id : 'no id',
+      rooms: [],
       text: 'Hi',
     }
     socket.emit('newMessage', message)
@@ -57,6 +59,7 @@ export default function Home() {
   function joinToRoom() {
     const message: IMessage = {
       socketId: socket.id ? socket.id : 'no id',
+      rooms: [],
       text: 'room1',
     }
     socket.emit('joinToRoom', message)
