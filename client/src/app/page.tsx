@@ -57,6 +57,9 @@ export default function Home() {
     return newMessagesList
   }
   function joinToRoom() {
+
+
+
     const message: IMessage = {
       socketId: socket.id ? socket.id : 'no id',
       rooms: [],

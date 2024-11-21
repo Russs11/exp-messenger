@@ -35,4 +35,18 @@ export class MyGateway implements OnModuleInit {
     };
     if (client.id === body.socketId) this.server.emit('onMessage', message);
   }
+
+  @SubscribeMessage('joinToRoom')
+  onJoinToRoom(
+    @MessageBody() body: MessageDto,
+    @ConnectedSocket() client: Socket,
+  ) {
+
+
+    const message: MessageDto = {
+      socketId: body.socketId ? body.socketId : 'no id',
+      text: body.text,
+    };
+    if (client.id === body.socketId) this.server.emit('onMessage', message);
+  }
 }
