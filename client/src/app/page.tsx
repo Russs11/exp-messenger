@@ -6,7 +6,6 @@ import { WebsocketContext, WebsocketProvider } from './context/WebsocketContext'
 
 interface IMessage {
   socketId: string
-  rooms: string[]
   text: string
 }
 
@@ -14,6 +13,7 @@ export default function Home() {
   const socket = useContext(WebsocketContext)
 
   const [messages, setMessages] = useState<IMessage[]>([])
+  const [rooms, setRooms] = useState<string[]>(['broadcast'])
 
   useEffect(() => {
     socket.on('connect', () => {
@@ -33,21 +33,26 @@ export default function Home() {
     }
   }, [])
 
-  function emitNewMessage1() {
+  function emitMessage1() {
     const message: IMessage = {
       socketId: socket.id ? socket.id : 'no id',
-      rooms: [],
       text: 'Hello World',
     }
-    socket.emit('newMessage', message)
+    socket.emit(rooms[0], message)
   }
-  function emitNewMessage2() {
+  function emitMessage2() {
     const message: IMessage = {
       socketId: socket.id ? socket.id : 'no id',
-      rooms: [],
       text: 'Hi',
     }
-    socket.emit('newMessage', message)
+    socket.emit(rooms[0], message)
+  }
+  function emitMessage3() {
+    const message: IMessage = {
+      socketId: socket.id ? socket.id : 'no id',
+      text: `Hi ${rooms[0]}`,
+    }
+    socket.emit(rooms[0], message)
   }
   function messagesList(messages: IMessage[]) {
     const newMessagesList = messages.map((msg, index) => {
@@ -57,15 +62,19 @@ export default function Home() {
     return newMessagesList
   }
   function joinToRoom() {
-
-
-
     const message: IMessage = {
       socketId: socket.id ? socket.id : 'no id',
-      rooms: [],
       text: 'room1',
     }
     socket.emit('joinToRoom', message)
+    setRooms(['room1'])
+  }
+  function emitRoom1Message() {
+    const message: IMessage = {
+      socketId: socket.id ? socket.id : 'no id',
+      text: 'Hello room1',
+    }
+    socket.emit('room1', message)
   }
 
   return (
@@ -82,23 +91,24 @@ export default function Home() {
             priority
           />
           <ol className='list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]'>
-            <li className='mb-2' onClick={emitNewMessage1}>
+            <li className='mb-2' onClick={emitMessage1}>
               Get started by editing{' '}
               <code className='bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold'>
                 src/app/page.tsx
               </code>
               .
             </li>
-            <li onClick={emitNewMessage2}>
-              Save and see your changes instantly.
-            </li>
+            <li onClick={emitMessage2}>Save and see your changes instantly.</li>
           </ol>
           {messages.length === 0 ? (
             <div>no messages</div>
           ) : (
             messagesList(messages)
           )}
-          <div className='flex gap-4 items-center flex-col sm:flex-row'>
+          <div
+            className='flex gap-4 items-center flex-col sm:flex-row'
+            onClick={joinToRoom}
+          >
             <div className='rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5'>
               <Image
                 className='dark:invert'
@@ -118,6 +128,19 @@ export default function Home() {
                 height={20}
               />
               Leave the room1
+            </div>
+            <div
+              className='rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5'
+              onClick={emitMessage3}
+            >
+              <Image
+                className='dark:invert'
+                src='/vercel.svg'
+                alt='Vercel logomark'
+                width={20}
+                height={20}
+              />
+              Send the room1
             </div>
             <a
               className='rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5'
