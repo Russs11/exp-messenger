@@ -69,12 +69,13 @@ export default function Home() {
     socket.emit('joinToRoom', message)
     setRooms(['room1'])
   }
-  function emitRoom1Message() {
+  function leaveFromRoom() {
     const message: IMessage = {
       socketId: socket.id ? socket.id : 'no id',
-      text: 'Hello room1',
+      text: 'broadcast',
     }
-    socket.emit('room1', message)
+    socket.emit('leaveFromRoom', message)
+    setRooms(['broadcast'])
   }
 
   return (

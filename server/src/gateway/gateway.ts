@@ -22,7 +22,6 @@ export class MyGateway implements OnModuleInit {
     this.server.on('connection', (socket) => {
       console.log('connected ' + socket.id);
       socket.join('broadcast');
-      console.log('rooms ', socket.rooms);
     });
   }
 
@@ -44,14 +43,23 @@ export class MyGateway implements OnModuleInit {
     @MessageBody() body: MessageDto,
     @ConnectedSocket() client: Socket,
   ) {
-    console.log('rooms1: ', client.rooms);
-    client.leave('broadcast');
-    client.join(body.text);
-    console.log('rooms2: ', client.rooms);
-
     const message: MessageDto = {
       socketId: body.socketId ? body.socketId : 'no id',
       text: `${body.socketId} join to ${body.text}`,
+    };
+    if (client.id === body.socketId)
+      this.server.to(body.text).emit('onMessage', message);
+  }
+
+  @SubscribeMessage('leaveFromRoom')
+  onLeaveFromRoom(
+    @MessageBody() body: MessageDto,
+    @ConnectedSocket() client: Socket,
+  ) {
+
+    const message: MessageDto = {
+      socketId: body.socketId ? body.socketId : 'no id',
+      text: `${body.socketId} join to broadcast`,
     };
     if (client.id === body.socketId)
       this.server.to(body.text).emit('onMessage', message);
