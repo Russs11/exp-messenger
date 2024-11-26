@@ -47,8 +47,11 @@ export class MyGateway implements OnModuleInit {
       socketId: body.socketId ? body.socketId : 'no id',
       text: `${body.socketId} join to ${body.text}`,
     };
-    if (client.id === body.socketId)
+    if (client.id === body.socketId) {
+      client.leave('broadcast');
+      client.join(body.text);
       this.server.to(body.text).emit('onMessage', message);
+    }
   }
 
   @SubscribeMessage('leaveFromRoom')
@@ -56,7 +59,6 @@ export class MyGateway implements OnModuleInit {
     @MessageBody() body: MessageDto,
     @ConnectedSocket() client: Socket,
   ) {
-
     const message: MessageDto = {
       socketId: body.socketId ? body.socketId : 'no id',
       text: `${body.socketId} join to broadcast`,
