@@ -1,7 +1,6 @@
 'use client'
 import Image from 'next/image'
 import { useContext, useEffect, useState } from 'react'
-import { io } from 'socket.io-client'
 import { WebsocketContext, WebsocketProvider } from './context/WebsocketContext'
 
 interface IMessage {
