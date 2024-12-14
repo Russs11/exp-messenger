@@ -11,10 +11,8 @@ export default {
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
-      },
-      fontFamily: {
-        roboto_regular: ['var(--font-roboto-regular)'],
-        roboto_bolt: ['var(--font_roboto_bolt)'],
+        roboto_bolt: 'var(--font_roboto_bolt)',
+        roboto_regular: 'var(--font_roboto_regular)',
       },
     },
   },

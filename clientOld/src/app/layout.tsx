@@ -1,32 +1,21 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import localFont from 'next/font/local'
+import localFont from 'next/font/local/'
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 const font_roboto_regular = localFont({
-  src: '../font/Roboto-Regular.ttf',
+  src: './fonts/Roboto-Regular.woff2',
   variable: '--font-roboto-regular',
   display: 'swap',
 })
 const font_roboto_bolt = localFont({
-  src: '../font/Roboto-Bold.ttf',
+  src: './fonts/Roboto-Bold.woff2',
   variable: '--font_roboto_bolt',
   display: 'swap',
 })
 
 export const metadata: Metadata = {
   title: 'exp-messenger',
-  description: 'exp-messenger',
+  description: 'exp-messenger for exps',
 }
 
 export default function RootLayout({
@@ -38,7 +27,6 @@ export default function RootLayout({
     <html lang='en'>
       <body
         className={`${font_roboto_regular.variable} ${font_roboto_bolt.variable} antialiased`}
-        // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
       </body>
