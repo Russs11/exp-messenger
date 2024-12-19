@@ -37,7 +37,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`${font_roboto_regular.variable} ${font_roboto_bolt.variable} antialiased`}
+        className={`${font_roboto_regular.variable} ${font_roboto_bolt.variable} antialiased flex min-h-screen`}
         // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
