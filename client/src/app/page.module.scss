@@ -1,0 +1,31 @@
+.page {
+  --blue: #66AAF9;
+  --light-blue: #95C3F8;
+  --black: #000000;
+  --white: #ffffff;
+
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  min-height: 100svh;
+
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 4.375em;
+    width: 100%;
+
+    background: var(--blue);
+
+    &_menu {
+      display: flex;
+      flex-grow: 1;
+
+      margin: 0 1.875em;
+    }
+  }
+
+}
