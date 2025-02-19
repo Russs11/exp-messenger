@@ -22,9 +22,15 @@
 
     &_menu {
       display: flex;
+      justify-content: flex-start;
       flex-grow: 1;
 
       margin: 0 1.875em;
+
+      .btnSearch{
+        margin-left: auto;
+
+      }
     }
   }
 
