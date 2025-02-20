@@ -18,6 +18,9 @@ export default function Home() {
           />
         </div>
       </div>
+      <div className={styles.main}>
+        <div className={styles.text}>text</div>
+      </div>
     </div>
   )
 }

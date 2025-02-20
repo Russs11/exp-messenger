@@ -5,7 +5,7 @@
   --white: #ffffff;
 
   display: grid;
-  grid-template-rows: 1fr;
+  grid-template-rows: 4.375em 1fr;
   grid-template-columns: 1fr;
   justify-items: center;
   min-height: 100svh;
@@ -27,11 +27,48 @@
 
       margin: 0 1.875em;
 
-      .btnSearch{
+      .btnSearch {
         margin-left: auto;
 
       }
     }
+  }
+
+  .main {
+    display: flex;
+
+    width: 100%;
+
+    // background-image: url('../img/image.png.jpeg');
+    // background-position: center;
+    // background-size: cover;
+    // background-repeat: no-repeat;
+    // opacity: 0.2;
+    // z-index: -1;
+
+    .text {
+      font-size: large;
+      opacity: 1;
+    }
+  }
+
+  .main::before {
+    content: "";
+    background-image: url('../img/policiya-mvd-rossiya.webp');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+
+    opacity: 0.2;
   }
 
 }
