@@ -4,6 +4,31 @@ import btnMenu from "../img/menu btn.svg"
 import btnSearch from '../img/search btn.svg'
 import Logo from "./components/logo"
 
+interface Room {
+  roomId: string,
+  avatarUrl: string,
+  name: string
+}
+
+const rooms: Room[] = [
+  { roomId: '1', avatarUrl: '../img/avatar.svg', name: 'Все подразделения' },
+  {
+    roomId: '2',
+    avatarUrl: '../img/avatar.svg',
+    name: 'Отдел криминалистических экспертиз',
+  },
+  {
+    roomId: '3',
+    avatarUrl: '../img/avatar.svg',
+    name: 'Отдел криминалистических учетов',
+  },
+  {
+    roomId: '4',
+    avatarUrl: '../img/avatar.svg',
+    name: 'Отдел специальных видов исследования',
+  },
+]
+
 export default function Home() {
   return (
     <div className={styles.page}>
@@ -19,7 +44,9 @@ export default function Home() {
         </div>
       </div>
       <div className={styles.main}>
-        <div className={styles.text}>text</div>
+        <div className={styles.card}>
+          <div className=''></div>
+        </div>
       </div>
     </div>
   )
