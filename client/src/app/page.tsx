@@ -44,8 +44,8 @@ export default function Home() {
         </div>
       </div>
       <div className={styles.main}>
-        <div className={styles.card}>
-          <div className=''></div>
+        <div className={styles.cards}>
+          
         </div>
       </div>
     </div>
