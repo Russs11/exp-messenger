@@ -1,31 +1,33 @@
-import Image from "next/image";
-import styles from "./page.module.scss";
-import btnMenu from "../img/menu btn.svg"
+import { ReactNode } from 'react'
+import Image from 'next/image'
+import styles from './page.module.scss'
+import btnMenu from '../img/menu btn.svg'
 import btnSearch from '../img/search btn.svg'
-import Logo from "./components/logo"
+import Logo from './components/logo'
+import RoomCard from './components/roomCard'
 
 interface Room {
-  roomId: string,
-  avatarUrl: string,
-  name: string
+  roomId: string
+  avatar: string
+  roomName: string
 }
 
 const rooms: Room[] = [
-  { roomId: '1', avatarUrl: '../img/avatar.svg', name: 'Все подразделения' },
+  { roomId: '1', avatar: 'ВП', roomName: 'Все подразделения' },
   {
     roomId: '2',
-    avatarUrl: '../img/avatar.svg',
-    name: 'Отдел криминалистических экспертиз',
+    avatar: 'КЭ',
+    roomName: 'Отдел криминалистических экспертиз',
   },
   {
     roomId: '3',
-    avatarUrl: '../img/avatar.svg',
-    name: 'Отдел криминалистических учетов',
+    avatar: 'КУ',
+    roomName: 'Отдел криминалистических учетов',
   },
   {
     roomId: '4',
-    avatarUrl: '../img/avatar.svg',
-    name: 'Отдел специальных видов исследования',
+    avatar: 'СИ',
+    roomName: 'Отдел специальных видов исследования',
   },
 ]
 
@@ -45,7 +47,16 @@ export default function Home() {
       </div>
       <div className={styles.main}>
         <div className={styles.cards}>
-          
+          {rooms.map((item: Room): ReactNode => {
+            return (
+              <RoomCard
+                key={item.roomId}
+                roomId={item.roomId}
+                avatar={item.avatar}
+                roomName={item.roomName}
+              />
+            )
+          })}
         </div>
       </div>
     </div>

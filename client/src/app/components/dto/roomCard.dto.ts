@@ -5,8 +5,8 @@ export class RoomCardDto {
   roomId: string
 
   @IsString()
-  avatarUrl: string
+  avatar: string
 
   @IsString()
-  name: string
+  roomName: string
 }
