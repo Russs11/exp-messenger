@@ -1,3 +1,25 @@
 .cardContainer {
-	
+	display: flex;
+
+	.avatar{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		margin-right: 1.875em;
+
+		height: 3.5em;
+		width: 3.5em;
+
+		background-image: url('../../../img/avatar.svg');
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+
+	.name{
+		display: flex;
+
+		padding-top: 0.312em;
+	}
 }
