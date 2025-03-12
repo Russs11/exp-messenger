@@ -1,7 +1,13 @@
 .cardContainer {
 	display: flex;
 
-	.avatar{
+	font-size: 1.5em;
+	font-weight: bold;
+
+	margin-bottom: 1.875em;
+
+	
+	.avatar {
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -16,10 +22,13 @@
 		background-repeat: no-repeat;
 		background-size: contain;
 	}
-
-	.name{
+	
+	.name {
 		display: flex;
-
+		flex-grow: 1;
+		
 		padding-top: 0.312em;
+
+		border-bottom: 0.063em solid rgba($color: #000000, $alpha: 0.26);
 	}
 }
