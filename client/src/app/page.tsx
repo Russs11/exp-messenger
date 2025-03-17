@@ -5,7 +5,6 @@ import btnMenu from '../img/menu btn.svg'
 import btnSearch from '../img/search btn.svg'
 import Logo from './components/logo'
 import RoomCard from './components/roomCard'
-import CardContainerSeparator from './components/cardContainerSeparator'
 
 interface Room {
   roomId: string
@@ -50,15 +49,12 @@ export default function Home() {
         <div className={styles.cards}>
           {rooms.map((item: Room): ReactNode => {
             return (
-              <>
-                <RoomCard
-                  key={item.roomId}
-                  roomId={item.roomId}
-                  avatar={item.avatar}
-                  roomName={item.roomName}
-                />
-                {/* <CardContainerSeparator /> */}
-              </>
+              <RoomCard
+                key={item.roomId}
+                roomId={item.roomId}
+                avatar={item.avatar}
+                roomName={item.roomName}
+              />
             )
           })}
         </div>
