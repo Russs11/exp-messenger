@@ -26,11 +26,10 @@
       flex-grow: 1;
 
       margin: 0 1.875em;
+    }
 
-      .btnSearch {
-        margin-left: auto;
-
-      }
+    .btnSearch {
+      margin-left: auto;
     }
   }
 
@@ -39,7 +38,7 @@
 
     width: 100%;
 
-    .cards{
+    .cards {
       display: flex;
       flex-direction: column;
 
@@ -52,7 +51,7 @@
 
   .main::before {
     content: "";
-    background-image: url('../../img/policiya-mvd-rossiya.webp');
+    background-image: url('../../../img/policiya-mvd-rossiya.webp');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
