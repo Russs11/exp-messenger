@@ -4,9 +4,16 @@ import Logo from '../../components/logo'
 import BtnMenu from '../../components/btnMenu'
 import BtnSearch from '../../components/btnSearch'
 
-export default async function Room({ params }: { params: Promise<string> }) {
+export default async function Room({
+  params,
+}: {
+  params: Promise<{ roomId: string }>
+  }) {
+  
+
+  
   const res = await params
-  console.log('res: ', res);
+  console.log(res)
   return (
     <div className={styles.page}>
       <div className={styles.header}>
@@ -16,7 +23,7 @@ export default async function Room({ params }: { params: Promise<string> }) {
           <BtnSearch style={styles.btnSearch} />
         </div>
       </div>
-      <div className={styles.main}>{}</div>
+      <div className={styles.main}>{res.roomId}</div>
     </div>
   )
 }
