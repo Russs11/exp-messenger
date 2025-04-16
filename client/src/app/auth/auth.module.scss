@@ -1,0 +1,31 @@
+.authContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	min-width: 24rem;
+	background-color: rgb(243 244 246);
+	min-height: fit-content;
+	padding: 2.5rem;
+	border-style: solid;
+	border-color: transparent;
+	border-width: 0px;
+	box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+	border-radius: 1rem;
+	background-clip: border-box;
+}
+
+.authHeading {
+	margin-top: 2.5rem;
+	text-align: center;
+	font-size: 1.5rem /* 24px */;
+	line-height: 2rem;
+	font-weight: 400;
+	line-height: 2.25rem;
+	letter-spacing: -0.025em;
+	color: rgb(17 24 39);
+}
+
+.authForm{
+	margin-top: 2.5rem;
+	width: 100%;
+}

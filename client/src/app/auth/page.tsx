@@ -7,11 +7,14 @@ export default function AuthPage() {
     <>
       <div className={styles.page}>
         <div className={styles.header}>
-          <Logo />
+          <div className={styles.header_menu}>
+            <Logo />
+          </div>
         </div>
         <Auth />
       </div>
-      <div className={styles.main}></div>
+      <div className={styles.main}>
+      </div>
     </>
   )
 }
