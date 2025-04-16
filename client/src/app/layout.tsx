@@ -1,18 +1,6 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
-import React from 'react'
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+import { roboto_regular } from './fonts'
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,24 +8,13 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  analytics,
-  team,
-  auth,
   children,
 }: Readonly<{
-  analytics: React.ReactNode
-  team: React.ReactNode
-  auth: React.ReactNode
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang='en'>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <div>{team}</div>
-        <div>{analytics}</div>
-        <div className='grid items-center justify-items-center'>{auth}</div>
+      <body className={`${roboto_regular.className}`}>
         {children}
       </body>
     </html>
