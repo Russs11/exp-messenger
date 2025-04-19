@@ -1,6 +1,6 @@
 import Logo from '../components/logo'
 import Auth from './auth'
-import styles from './page.module.scss'
+import styles from './authPage.module.scss'
 
 export default function AuthPage() {
   return (

@@ -1,5 +1,5 @@
 'use client'
-import InputField from '../components/inputField'
+import InputField from '../components/inputField/inputField'
 import styles from './auth.module.scss'
 
 

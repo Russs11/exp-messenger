@@ -1,6 +1,6 @@
 .page {
-  --blue: #66AAF9;
-  --light-blue: #95C3F8;
+  --blue: #66aaf9;
+  --light-blue: #95c3f8;
   --black: #000000;
   --white: #ffffff;
 
@@ -29,30 +29,24 @@
 
       .btnSearch {
         margin-left: auto;
-
       }
     }
   }
 
   .main {
     display: flex;
-
+    flex-direction: column;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
     width: 100%;
 
-    .cards{
-      display: flex;
-      flex-direction: column;
-
-      width: 100%;
-
-      margin-top: 2.5em;
-      margin-left: 2.5em;
-    }
+    
   }
 
   .main::before {
     content: "";
-    background-image: url('../../img/policiya-mvd-rossiya.webp');
+    background-image: url("../../img/policiya-mvd-rossiya.webp");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
