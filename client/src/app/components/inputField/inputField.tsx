@@ -1,8 +1,5 @@
-import { DetailedHTMLProps, HTMLAttributes, ReactElement } from 'react'
+import { DetailedHTMLProps, HTMLAttributes } from 'react'
 import styles from './inputField.module.scss'
-
-
-
 
 interface IInputFieldProps
   extends DetailedHTMLProps<
@@ -33,8 +30,8 @@ export default function InputField({
 }: IInputFieldProps) {
   return (
     <div>
-      <label htmlFor={id}></label>
-      <div>
+      <label htmlFor={id} className={styles.label}></label>
+      <div className={styles.mt2}>
         <input className={styles.inputField} type={type} />
       </div>
     </div>
