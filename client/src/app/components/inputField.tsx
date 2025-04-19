@@ -16,15 +16,23 @@ interface IInputFieldProps
   state?: 'error' | 'success'
 }
 
-export default function InputField(): IInputFieldProps {
+export default function InputField({
+  id,
+  type,
+  placeholder,
+  label,
+  value,
+  autoComplete,
+  isNumber,
+  state,
+  ...props
+}: IInputFieldProps) {
   return (
-		<div>
-			<label htmlFor="">
-			</label>
-			<div>
-      <input type='text' />
-		</div>
-		</div>
-
+    <div>
+      <label htmlFor={id}></label>
+      <div>
+        <input type={type} />
+      </div>
+    </div>
   )
 }
