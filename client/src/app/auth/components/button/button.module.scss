@@ -1,0 +1,27 @@
+.submitButton {
+	--radius: 10px;
+	--tw-bg-opacity: 1;
+	border-radius: calc(var(--radius) - 2px);
+  background-color: #66aaf9; 
+	padding-left: 0.75rem /* 12px */;
+	padding-right: 0.75rem;
+	padding-top: 0.5rem /* 8px */;
+	padding-bottom: 0.5rem;
+	color: rgb(255 255 255);
+	--tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	--tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+	box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+	font-size: 0.875rem /* 14px */;
+	line-height: 1.25rem;
+	font-weight: 600;
+	border:#03012c;
+}
+.submitButton:hover {
+	--tw-bg-opacity: 1;
+	background-color: #95c3f8;
+}
+.submitButton:focus-visible {
+  outline-style: solid;
+	outline-offset: 2px;
+	outline-color: #4f46e5;
+}

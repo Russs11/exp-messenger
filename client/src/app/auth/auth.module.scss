@@ -29,3 +29,11 @@
 	margin-top: 2.5rem;
 	width: 100%;
 }
+
+.buttonsContainer {
+	margin-top: 2.5rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 1.25rem;
+}
