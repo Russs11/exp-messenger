@@ -2,24 +2,26 @@
 import styles from './auth.module.scss'
 import Button from './components/button/button'
 import InputField from './components/inputField/inputField'
+import LogoMvd from './components/logoMvd'
 
 export default function Auth() {
   return (
     <div>
       <div className={styles.authContainer}>
-        <div className={styles.authHeading}>Войти в профиль</div>
+        <LogoMvd />
+        <div className={styles.authHeading}>Войти в мессенджер</div>
         <form className={styles.authForm}>
           <InputField
-            id='email'
+            id='login'
             type='login'
-            placeholder='Введите логин'
+            placeholder='Логин'
             label='Логин'
           />
           <InputField
-            id='email'
-            type='login'
-            placeholder='Введите логин'
-            label='Логин'
+            id='password'
+            type='password'
+            placeholder='Пароль'
+            label='Пароль'
           />
           <div className={styles.buttonsContainer}>
             <Button type='submit'>Войти</Button>

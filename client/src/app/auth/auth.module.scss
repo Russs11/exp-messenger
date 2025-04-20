@@ -2,11 +2,11 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	align-self: center;
 	min-width: 24rem;
 	width: 25%;
-	// background-color: #ffffff;
-
-	background-color: rgb(243 244 246);
+	background-color: #ffffff;
+	// background-color: rgb(243 244 246);
 	min-height: fit-content;
 	padding: 2.5rem;
 	border-style: solid;
@@ -29,7 +29,6 @@
 }
 
 .authForm{
-	margin-top: 2.5rem;
 	width: 100%;
 }
 
