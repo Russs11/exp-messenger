@@ -11,9 +11,9 @@ export default function AuthPage() {
             <Logo />
           </div>
         </div>
+        <div className={styles.main}>
         <Auth />
-      </div>
-      <div className={styles.main}>
+        </div>
       </div>
     </>
   )
