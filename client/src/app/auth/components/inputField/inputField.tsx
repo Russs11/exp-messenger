@@ -32,7 +32,11 @@ export default function InputField({
     <div>
       <label htmlFor={id} className={styles.label}></label>
       <div className={styles.mt2}>
-        <input className={styles.inputField} type={type} placeholder={placeholder} />
+        <input
+          className={styles.inputField}
+          type={type}
+          placeholder={placeholder}
+        />
       </div>
     </div>
   )
